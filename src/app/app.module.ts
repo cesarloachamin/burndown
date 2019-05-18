@@ -2,7 +2,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
-import {NgbModule, NgbDatepicker, NgbActiveModal} from '@ng-bootstrap/ng-bootstrap';
+import {NgbModule, NgbDatepicker, NgbActiveModal, NgbDateNativeAdapter, NgbDateAdapter} from '@ng-bootstrap/ng-bootstrap';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { SprintListComponent } from './sprint-list/sprint-list.component';
@@ -29,7 +29,8 @@ const appRoutes: Routes = [
     ReactiveFormsModule
   ],
   providers: [
-    NgbActiveModal
+    NgbActiveModal,
+    {provide: NgbDateAdapter, useClass: NgbDateNativeAdapter}
   ],
   bootstrap: [AppComponent],
   entryComponents: [SprintComponent]

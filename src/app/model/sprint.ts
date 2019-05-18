@@ -20,7 +20,7 @@ export default class Sprint {
     get statusLabel(): string {
         return labelStatus(this.status);
     }
-    
+
     isInProgress() {
         return this.status === Status.IN_PROGRESS;
     }
