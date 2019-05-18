@@ -1,0 +1,19 @@
+<form [formGroup]="sprintForm" (ngSubmit)="onSubmit()">
+    <div class="form-group">
+        <label for="title">Title</label>
+        <input type="text" class="form-control" id="title" placeholder="Sprint Zero" [formControl]="sprintForm.controls['title']" [ngClass]="{'is-invalid': isFormControlInValid('title') }">
+    </div>
+    <div class="form-group">
+        <label for="startDate">Start Date</label>
+        <input type="text" class="form-control" id="startDate" placeholder="Start Date" [formControl]="sprintForm.controls['startDate']" [ngClass]="{'is-invalid': isFormControlInValid('startDate') }">
+    </div>
+    <div class="form-group">
+        <label for="endDate">End Date</label>
+        <input type="text" class="form-control" id="endDate" placeholder="Start Date" [formControl]="sprintForm.controls['endDate']" [ngClass]="{'is-invalid': isFormControlInValid('endDate') }">
+    </div>
+    <div class="form-group">
+        <label for="goal">Goal</label>
+        <input type="text" class="form-control" id="goal" placeholder="100" [formControl]="sprintForm.controls['goal']" [ngClass]="{'is-invalid': isFormControlInValid('goal') }">
+    </div>
+    <button type="submit" class="btn btn-primary">Save</button>
+</form>
