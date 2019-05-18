@@ -8,9 +8,11 @@ import { AppComponent } from './app.component';
 import { SprintListComponent } from './sprint-list/sprint-list.component';
 import { SprintFormComponent } from './sprint-form/sprint-form.component';
 import { Routes, RouterModule } from '@angular/router';
+import { SprintComponent } from './sprint/sprint.component';
 
 const appRoutes: Routes = [
   {path: 'sprints', component: SprintListComponent},
+  {path: 'sprint/:id', component: SprintComponent},
   {path: '', redirectTo: '/sprints', pathMatch: 'full'}
 ]
 
@@ -18,7 +20,8 @@ const appRoutes: Routes = [
   declarations: [
     AppComponent,
     SprintListComponent,
-    SprintFormComponent
+    SprintFormComponent,
+    SprintComponent
   ],
   imports: [
     NgbModule,

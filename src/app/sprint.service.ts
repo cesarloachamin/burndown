@@ -29,6 +29,10 @@ export class SprintService {
     return of(this.sprints);
   }
 
+  getSprint(id: string): Observable<Sprint> {
+    return of(this.sprints.find(sprint => sprint.id === id));
+  }
+
   addSprint(sprint: Sprint): void {
     this.sprints.unshift(sprint);
     this.save();
