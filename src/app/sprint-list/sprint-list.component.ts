@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { SprintService } from '../sprint.service';
 import Sprint from '../model/sprint';
+import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
+import { SprintComponent } from '../sprint/sprint.component';
 
 @Component({
   selector: 'app-sprint-list',
@@ -10,11 +12,15 @@ import Sprint from '../model/sprint';
 export class SprintListComponent implements OnInit {
 
   sprints: Sprint[];
-  constructor(private service:SprintService) { }
+  constructor(private service:SprintService, private modalService: NgbModal) { }
 
   ngOnInit() {
     this.service.getSprints()
                 .subscribe(sprints => this.sprints = sprints);
+  }
+
+  create(): void {
+    this.modalService.open(SprintComponent);
   }
 
 }

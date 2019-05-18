@@ -2,7 +2,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
-import {NgbModule, NgbDatepicker} from '@ng-bootstrap/ng-bootstrap';
+import {NgbModule, NgbDatepicker, NgbActiveModal} from '@ng-bootstrap/ng-bootstrap';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { SprintListComponent } from './sprint-list/sprint-list.component';
@@ -28,7 +28,10 @@ const appRoutes: Routes = [
     FormsModule,
     ReactiveFormsModule
   ],
-  providers: [],
-  bootstrap: [AppComponent]
+  providers: [
+    NgbActiveModal
+  ],
+  bootstrap: [AppComponent],
+  entryComponents: [SprintComponent]
 })
 export class AppModule { }

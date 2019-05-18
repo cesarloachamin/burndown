@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, Validators, FormGroup } from '@angular/forms';
+import { NgbActiveModal } from '@ng-bootstrap/ng-bootstrap';
 
 @Component({
   selector: 'app-sprint',
@@ -10,7 +11,7 @@ export class SprintComponent implements OnInit {
 
   sprintForm: FormGroup;
 
-  constructor(private fb: FormBuilder) {
+  constructor(private fb: FormBuilder, public activeModal: NgbActiveModal) {
     this.sprintForm = this.fb.group({
       'title': ['', Validators.required],
       'startDate': ['', Validators.required],
