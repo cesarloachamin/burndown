@@ -6,10 +6,10 @@ import { SprintService } from '../sprint.service';
 
 @Component({
   selector: 'app-sprint',
-  templateUrl: './sprint.component.html',
-  styleUrls: ['./sprint.component.css']
+  templateUrl: './sprint-form.component.html',
+  styleUrls: ['./sprint-form.component.css']
 })
-export class SprintComponent implements OnInit {
+export class SprintFormComponent implements OnInit {
 
   sprintForm: FormGroup;
 

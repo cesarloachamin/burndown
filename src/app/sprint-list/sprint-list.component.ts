@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { SprintService } from '../sprint.service';
 import Sprint from '../model/sprint';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
-import { SprintComponent } from '../sprint/sprint.component';
+import { SprintFormComponent } from '../sprint/sprint-form.component';
 
 @Component({
   selector: 'app-sprint-list',
@@ -20,7 +20,7 @@ export class SprintListComponent implements OnInit {
   }
 
   create(): void {
-    this.modalService.open(SprintComponent);
+    this.modalService.open(SprintFormComponent);
   }
 
 }
