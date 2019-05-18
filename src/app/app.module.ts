@@ -6,7 +6,7 @@ import {NgbModule, NgbDatepicker, NgbActiveModal, NgbDateNativeAdapter, NgbDateA
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { SprintListComponent } from './sprint-list/sprint-list.component';
-import { SprintFormComponent } from './sprint/sprint-form.component';
+import { SprintFormComponent } from './sprint-form/sprint-form.component';
 import { Routes, RouterModule } from '@angular/router';
 
 const appRoutes: Routes = [
