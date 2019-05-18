@@ -1,0 +1,21 @@
+<h1>Sprints</h1>
+<table class="table">
+    <thead class="thead-light">
+        <tr>
+            <th>Title</th>
+            <th>Start Date</th>
+            <th>End Date</th>
+            <th>Status</th>
+            <th>Velocity</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let sprint of sprints">
+            <td>{{sprint.title}}</td>
+            <td>{{sprint.startDate | date: 'longDate'}}</td>
+            <td>{{sprint.endDate | date: 'longDate'}}</td>
+            <td>{{sprint.statusLabel}}</td>
+            <td>{{sprint.velocity}}</td>
+        </tr>
+    </tbody>
+</table>
