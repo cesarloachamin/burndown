@@ -4,7 +4,7 @@ export class BacklogItem {
     value: number;
     type: BacklogItemType;
 
-    constuctor(id: string, title: string, value: number, type?: BacklogItemType) {
+    constructor(id: string, title: string, value: number, type?: BacklogItemType) {
         this.title = title;
         this.value = value;
         this.type = type || BacklogItemType.HISTORY_TYPE;
@@ -12,6 +12,6 @@ export class BacklogItem {
 }
 
 export enum BacklogItemType {
-    BUG,
-    HISTORY_TYPE
+    HISTORY_TYPE,
+    BUG
 }

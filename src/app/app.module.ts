@@ -9,6 +9,7 @@ import { SprintListComponent } from './sprint-list/sprint-list.component';
 import { SprintFormComponent } from './sprint-form/sprint-form.component';
 import { Routes, RouterModule } from '@angular/router';
 import { SprintComponent } from './sprint/sprint.component';
+import { BacklogItemFormComponent } from './backlog-item-form/backlog-item-form.component';
 
 const appRoutes: Routes = [
   {path: 'sprints', component: SprintListComponent},
@@ -21,7 +22,8 @@ const appRoutes: Routes = [
     AppComponent,
     SprintListComponent,
     SprintFormComponent,
-    SprintComponent
+    SprintComponent,
+    BacklogItemFormComponent
   ],
   imports: [
     NgbModule,

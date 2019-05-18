@@ -7,14 +7,14 @@
     </div>
     <div class="modal-body">
 
-        <div class="form-row form-group">
-            <div class="col">
+        <div class="form-row">
+            <div class="col form-group">
                 <label for="title">Title</label>
                 <input type="text" class="form-control" id="title" placeholder="Sprint Zero" [formControl]="sprintForm.controls['title']" [ngClass]="{'is-invalid': isFormControlInValid('title') }">
             </div>
         </div>
-        <div class="form-row form-group">
-            <div class="col">
+        <div class="form-row ">
+            <div class="col form-group">
                 <label for="startDate">Start Date</label>
                 <div class="input-group">
                     <input type="text" class="form-control" id="startDate" placeholder="yyyy-mm-dd" ngbDatepicker #startDate="ngbDatepicker" [formControl]="sprintForm.controls['startDate']" [ngClass]="{'is-invalid': isFormControlInValid('startDate') }">
@@ -23,7 +23,7 @@
                     </div>
                 </div>
             </div>
-            <div class="col">
+            <div class="col form-group">
                 <label for="endDate">End Date</label>
                 <div class="input-group">
                     <input type="text" class="form-control" id="endDate" placeholder="yyyy-mm-dd" ngbDatepicker #endDate="ngbDatepicker" [formControl]="sprintForm.controls['endDate']" [ngClass]="{'is-invalid': isFormControlInValid('endDate') }">

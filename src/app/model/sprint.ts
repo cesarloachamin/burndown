@@ -1,3 +1,5 @@
+import { BacklogItem } from './backlog.item';
+
 export default class Sprint {
     id: string;
     title: string;
@@ -6,6 +8,7 @@ export default class Sprint {
     startDate: Date;
     endDate: Date;
     status: Status;
+    items: BacklogItem[];
 
     constructor(id: string, title: string, startDate: Date, endDate: Date, status?: Status, goal?: number, velocity?: number) {
         this.id = id;
