@@ -8,12 +8,38 @@
             <li class="breadcrumb-item active" [routerLinkActive]="'active'" aria-current="page">{{sprint.title}}</li>
         </ol>
     </nav>
-    <app-burndow-chart [sprint]="sprint"></app-burndow-chart>
-    <app-backlog-item-form [item]="selectedItem" (saved)="onBacklogItemSaved($event)" (deleted)="onBacklogItemDeleted($event)"></app-backlog-item-form>
-    <ul class="list-group mt-3">
-        <a *ngFor="let item of sprint.items" [ngClass]="item.type === 0 ? 'item-story' : 'item-bug'" (click)="onBacklogItemSelected(item)" href="#" class="list-group-item d-flex justify-content-between align-items-center">
-            {{item.title}}
-            <span class="badge badge-primary badge-pill ">{{item.value}}</span>
-        </a>
-    </ul>
+    <div class="d-flex">
+        <div class="ml-auto">
+            <form class="form-inline">
+                <div class="form-group mx-sm-3 mb-2">
+                    <label for="goal" class="mr-2">Goal</label>
+                    <input type="number" class="form-control" id="goal">
+                </div>
+                <button type="submit" class="btn btn-primary mb-2">Start Sprint</button>
+            </form>
+        </div>
+    </div>
+    <ngb-tabset type="pills">
+        <ngb-tab title="Sprint Backlog">
+            <ng-template ngbTabContent>
+                <div class="mt-3">
+                    <app-backlog-item-form [item]="selectedItem" (saved)="onBacklogItemSaved($event)" (deleted)="onBacklogItemDeleted($event)"></app-backlog-item-form>
+                    <hr />
+                    <ul class="list-group mt-3">
+                        <a *ngFor="let item of sprint.items" [ngClass]="item.type === 0 ? 'item-story' : 'item-bug'" (click)="onBacklogItemSelected(item)" href="#" class="list-group-item d-flex justify-content-between align-items-center">
+              {{item.title}}
+              <span class="badge badge-primary badge-pill ">{{item.value}}</span>
+            </a>
+                    </ul>
+                </div>
+            </ng-template>
+        </ngb-tab>
+        <ngb-tab title="Burndown">
+            <ng-template ngbTabContent>
+                <div class="mt-2">
+                    <app-burndow-chart [sprint]="sprint"></app-burndow-chart>
+                </div>
+            </ng-template>
+        </ngb-tab>
+    </ngb-tabset>
 </div>

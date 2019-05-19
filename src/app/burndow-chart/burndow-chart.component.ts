@@ -1,6 +1,7 @@
 import { Component, OnInit, Input, ViewChild, ElementRef } from '@angular/core';
 import {Chart} from 'chart.js';
 import Sprint from '../model/sprint';
+import { DatePipe } from '@angular/common';
 declare var window:any;
 
 @Component({
@@ -17,19 +18,20 @@ export class BurndowChartComponent implements OnInit {
   constructor() { }
 
   ngOnInit() {
+    const labels = this.createLabels();
     this.chart = new Chart('burndownCanvas', {
       type: 'line',
       data: {
-        labels: ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday'],
+        labels: labels,
         datasets: [
           {
-            label: 'Proyected',
+            label: 'Projected',
             borderColor: '#007bff', //danger #dc3545 //warning: #ffc107
             backgroundColor: '#007bff',
             lineTension: 0,
             borderWidth: 2,
             fill: false,
-            data: [60, 50, 40, 30, 20, 10, 0]
+            data: this.createProjectedData(labels.length, this.sprint.goal)
           },
           {
             label: 'Real',
@@ -38,7 +40,7 @@ export class BurndowChartComponent implements OnInit {
             borderColor: '#28a745',
             borderWidth: 6,
             fill: false,
-            data: [60, 55, 45, 35, 22, 17, 8]
+            data: [60, 55, 50, 43, 36, 31, 25, 20, 16, 10, 4]
           }
         ]
       },
@@ -74,5 +76,29 @@ export class BurndowChartComponent implements OnInit {
         }
       }
     });
+  }
+
+  createLabels(): string[] {
+    const labels = [];
+    const notWorkingDays = [0, 6];
+    let currentDate = new Date(this.sprint.startDate.getTime());
+    while(currentDate <= this.sprint.endDate) {
+      if (notWorkingDays.indexOf(currentDate.getDay()) === -1) {
+        labels.push(new DatePipe('en-US').transform(currentDate, 'EEEE d'));
+      }
+      currentDate.setDate(currentDate.getDate() + 1);
+    }
+    return labels;
+  }
+
+  createProjectedData(days: number, goal: number): number[] {
+    const data = [];
+    const rate = goal / (days - 1);
+    let current = goal;
+    while (current >= 0) {
+      data.push(current);
+      current -= rate;
+    }
+    return data;
   }
 }

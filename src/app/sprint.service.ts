@@ -22,7 +22,7 @@ export class SprintService {
       ];
     } else {
       this.sprints = array.map(item => {
-        const sprint = new Sprint(item.id, item.title, item.startDate, item.endDate, item.status, item.goal, item.velocity);
+        const sprint = new Sprint(item.id, item.title, new Date(item.startDate), new Date(item.endDate), item.status, item.goal, item.velocity);
         sprint.items = item.items || [];
         return sprint;
       });

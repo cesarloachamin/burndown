@@ -38,9 +38,10 @@ export class BacklogItemFormComponent implements OnChanges {
     }
   }
 
-  private cleanForm() {
+  cleanForm(): boolean {
     this.item = undefined;
     this.updateForm();
+    return false;
   }
 
   delete(): void {

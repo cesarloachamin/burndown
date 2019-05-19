@@ -1,30 +1,26 @@
-<div class="card">
-    <div class="card-header">New Backlog Item</div>
-    <div class="card-body">
-        <form [formGroup]="itemForm" (submit)="save()" novalidate>
-            <div class="form-row">
-                <div class="col form-group">
-                    <label for="title">Title</label>
-                    <input type="text" class="form-control" id="title" placeholder="Story one" [formControl]="itemForm.controls['title']" [ngClass]="{'is-invalid': isFormControlInValid('title') }">
-                </div>
-            </div>
-            <div class="form-row">
-                <div class="col form-group">
-                    <label for="type">Type</label>
-                    <select id="type" class="custom-select" [formControl]="itemForm.controls['type']" [ngClass]="{'is-invalid': isFormControlInValid('type') }">
-                        <option value="0" selected>Story</option>
-                        <option value="1">Bug</option>
-                    </select>
-                </div>
-                <div class="col form-group">
-                    <label for="value">Story Points</label>
-                    <input type="number" class="form-control" id="value" min="0" [formControl]="itemForm.controls['value']" [ngClass]="{'is-invalid': isFormControlInValid('value') }">
-                </div>
-            </div>
-            <div class="d-flex justify-content-end">
-                <button type="button" class="btn btn-danger mr-2" *ngIf="item" (click)="delete()">Delete</button>
-                <button type="submit" class="btn btn-primary">Save</button>
-            </div>
-        </form>
+<form [formGroup]="itemForm" (submit)="save()" novalidate>
+    <div class="form-row">
+        <div class="col form-group">
+            <!-- <label for="title">Title</label> -->
+            <input type="text" class="form-control" id="title" placeholder="Title" [formControl]="itemForm.controls['title']" [ngClass]="{'is-invalid': isFormControlInValid('title') }">
+        </div>
     </div>
-</div>
+    <div class="form-row">
+        <div class="col form-group">
+            <!-- <label for="type">Type</label> -->
+            <select id="type" class="custom-select" [formControl]="itemForm.controls['type']" [ngClass]="{'is-invalid': isFormControlInValid('type') }">
+        <option value="0" selected>Story</option>
+        <option value="1">Bug</option>
+      </select>
+        </div>
+        <div class="col form-group">
+            <!-- <label for="value">Story Points</label> -->
+            <input type="number" placeholder="Story Points" class="form-control" id="value" min="0" [formControl]="itemForm.controls['value']" [ngClass]="{'is-invalid': isFormControlInValid('value') }">
+        </div>
+    </div>
+    <div class="d-flex justify-content-end">
+        <button type="button" class="btn btn-danger mr-2" *ngIf="item" (click)="delete()">Delete</button>
+        <button type="submit" class="btn btn-primary mr-2">{{item ? 'Save' : 'Add'}}</button>
+        <button type="button" class="btn btn-outline-dark " (click)="cleanForm() " *ngIf="item">Cancel</button>
+    </div>
+</form>
