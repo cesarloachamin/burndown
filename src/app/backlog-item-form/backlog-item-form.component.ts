@@ -14,6 +14,8 @@ export class BacklogItemFormComponent implements OnChanges {
   item: BacklogItem;
   @Output()
   saved = new EventEmitter<BacklogItem>();
+  @Output()
+  deleted = new EventEmitter<BacklogItem>();
 
   constructor(private fb: FormBuilder) {
   }
@@ -30,11 +32,20 @@ export class BacklogItemFormComponent implements OnChanges {
                                         this.itemForm.controls['title'].value,
                                         this.itemForm.controls['value'].value,
                                         this.itemForm.controls['type'].value));
-      this.item = undefined;
-      this.updateForm();
+      this.cleanForm();
     } else {
       Object.keys(this.itemForm.controls).forEach(key => this.itemForm.controls[key].markAsTouched());
     }
+  }
+
+  private cleanForm() {
+    this.item = undefined;
+    this.updateForm();
+  }
+
+  delete(): void {
+    this.deleted.emit(this.item);
+    this.cleanForm();
   }
 
   isFormControlInValid(name: string): boolean {

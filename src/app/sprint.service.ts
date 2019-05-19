@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import Sprint, { Status } from './model/sprint';
 import {of, Observable} from 'rxjs';
+import { BacklogItem } from './model/backlog.item';
 
 @Injectable({
   providedIn: 'root'
@@ -20,7 +21,11 @@ export class SprintService {
         new Sprint('1', 'Sprint 1', new Date(2019, 1, 1), new Date(2019, 1, 15), Status.COMPLETED, 30, 28),
       ];
     } else {
-      this.sprints = array.map(item => new Sprint(item.id, item.title, item.startDate, item.endDate, item.status, item.goal, item.velocity));
+      this.sprints = array.map(item => {
+        const sprint = new Sprint(item.id, item.title, item.startDate, item.endDate, item.status, item.goal, item.velocity);
+        sprint.items = item.items || [];
+        return sprint;
+      });
     }
   }
 
@@ -36,6 +41,26 @@ export class SprintService {
   addSprint(sprint: Sprint): void {
     this.sprints.unshift(sprint);
     this.save();
+  }
+
+  addBacklogItem(sprint: Sprint, item: BacklogItem): Observable<Sprint> {
+    item.id = sprint.items.length + '';
+    sprint.items.push(item);
+    this.save();
+    return of(sprint);
+  }
+
+  editBacklogItem(sprint: Sprint, item: BacklogItem): Observable<Sprint> {
+    const idx = sprint.items.findIndex(i => i.id === item.id);
+    sprint.items[idx] = item;
+    this.save();
+    return of(sprint);
+  }
+
+  deleteBacklogItem(sprint: Sprint, item: BacklogItem): Observable<Sprint> {
+    sprint.items = sprint.items.filter(i => i.id !== item.id);
+    this.save();
+    return of(sprint);
   }
 
   private save(): void {

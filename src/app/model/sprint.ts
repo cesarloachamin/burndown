@@ -18,6 +18,7 @@ export default class Sprint {
         this.status = status || Status.NOT_STARTED;
         this.velocity = velocity || 0;
         this.goal = goal || 0;
+        this.items = [];
     }
 
     get statusLabel(): string {

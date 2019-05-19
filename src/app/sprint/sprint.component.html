@@ -2,10 +2,13 @@
     No Sprint found
 </div>
 <div *ngIf="sprint">
-    <h1>{{sprint.title}}</h1>
-    <hr/>
-    <h2>Sprint Backlog</h2>
-    <app-backlog-item-form [item]="selectedItem" (saved)="onBacklogItemSaved($event)"></app-backlog-item-form>
+    <nav aria-label="breadcrumb">
+        <ol class="breadcrumb">
+            <li class="breadcrumb-item"><a [routerLink]="['/sprints']">Sprints</a></li>
+            <li class="breadcrumb-item active" [routerLinkActive]="'active'" aria-current="page">{{sprint.title}}</li>
+        </ol>
+    </nav>
+    <app-backlog-item-form [item]="selectedItem" (saved)="onBacklogItemSaved($event)" (deleted)="onBacklogItemDeleted($event)"></app-backlog-item-form>
     <ul class="list-group mt-3">
         <a *ngFor="let item of sprint.items" [ngClass]="item.type === 0 ? 'item-story' : 'item-bug'" (click)="onBacklogItemSelected(item)" href="#" class="list-group-item d-flex justify-content-between align-items-center">
             {{item.title}}

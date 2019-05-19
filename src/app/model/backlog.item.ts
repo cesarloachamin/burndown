@@ -9,6 +9,10 @@ export class BacklogItem {
         this.value = value;
         this.type = type || BacklogItemType.HISTORY_TYPE;
     }
+
+    isNew() {
+      return !this.id;
+    }
 }
 
 export enum BacklogItemType {

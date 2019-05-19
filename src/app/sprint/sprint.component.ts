@@ -21,10 +21,6 @@ export class SprintComponent implements OnInit {
       const id = params['id'];
       this.service.getSprint(id).subscribe(sprint => {
         this.sprint = sprint;
-        if (!this.sprint.items) {
-          this.sprint.items = [];
-          this.sprint.items.push(new BacklogItem('1a', 'Create an admin page', 5, BacklogItemType.HISTORY_TYPE));
-        }
       });
     });
   }
@@ -35,8 +31,17 @@ export class SprintComponent implements OnInit {
   }
 
   onBacklogItemSaved(item: BacklogItem) : void {
-    item.id = (Math.random() * 10000).toFixed(0);
-    this.sprint.items.push(item);
+    let subscriber;
+    if (item.isNew()) {
+      subscriber = this.service.addBacklogItem(this.sprint, item);
+    } else {
+      subscriber = this.service.editBacklogItem(this.sprint, item);
+    }
+    subscriber.subscribe(sprint => this.sprint = sprint);
+  }
+
+  onBacklogItemDeleted(item: BacklogItem): void {
+    this.service.deleteBacklogItem(this.sprint, item).subscribe(sprint => this.sprint = sprint);
   }
 
 }
