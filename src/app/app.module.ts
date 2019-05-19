@@ -10,6 +10,7 @@ import { SprintFormComponent } from './sprint-form/sprint-form.component';
 import { Routes, RouterModule } from '@angular/router';
 import { SprintComponent } from './sprint/sprint.component';
 import { BacklogItemFormComponent } from './backlog-item-form/backlog-item-form.component';
+import { BurndowChartComponent } from './burndow-chart/burndow-chart.component';
 
 const appRoutes: Routes = [
   {path: 'sprints', component: SprintListComponent},
@@ -23,7 +24,8 @@ const appRoutes: Routes = [
     SprintListComponent,
     SprintFormComponent,
     SprintComponent,
-    BacklogItemFormComponent
+    BacklogItemFormComponent,
+    BurndowChartComponent
   ],
   imports: [
     NgbModule,
