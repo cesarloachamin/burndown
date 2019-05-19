@@ -12,6 +12,7 @@ import { BacklogItem, BacklogItemType } from '../model/backlog.item';
 export class SprintComponent implements OnInit {
 
   sprint:Sprint;
+  selectedItem: BacklogItem;
 
   constructor(private route: ActivatedRoute, private service: SprintService) { }
 
@@ -26,6 +27,16 @@ export class SprintComponent implements OnInit {
         }
       });
     });
+  }
+
+  onBacklogItemSelected(item: BacklogItem) : boolean {
+    this.selectedItem = item;
+    return false;
+  }
+
+  onBacklogItemSaved(item: BacklogItem) : void {
+    item.id = (Math.random() * 10000).toFixed(0);
+    this.sprint.items.push(item);
   }
 
 }

@@ -5,9 +5,9 @@
     <h1>{{sprint.title}}</h1>
     <hr/>
     <h2>Sprint Backlog</h2>
-    <app-backlog-item-form></app-backlog-item-form>
+    <app-backlog-item-form [item]="selectedItem" (saved)="onBacklogItemSaved($event)"></app-backlog-item-form>
     <ul class="list-group mt-3">
-        <a *ngFor="let item of sprint.items" [ngClass]="item.type === 0 ? 'item-story' : 'item-bug'" href="#" class="list-group-item d-flex justify-content-between align-items-center">
+        <a *ngFor="let item of sprint.items" [ngClass]="item.type === 0 ? 'item-story' : 'item-bug'" (click)="onBacklogItemSelected(item)" href="#" class="list-group-item d-flex justify-content-between align-items-center">
             {{item.title}}
             <span class="badge badge-primary badge-pill ">{{item.value}}</span>
         </a>

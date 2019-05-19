@@ -2,7 +2,6 @@
     <div class="card-header">New Backlog Item</div>
     <div class="card-body">
         <form [formGroup]="itemForm" (submit)="save()" novalidate>
-
             <div class="form-row">
                 <div class="col form-group">
                     <label for="title">Title</label>
@@ -13,8 +12,8 @@
                 <div class="col form-group">
                     <label for="type">Type</label>
                     <select id="type" class="custom-select" [formControl]="itemForm.controls['type']" [ngClass]="{'is-invalid': isFormControlInValid('type') }">
-                        <option value="1" selected>Story</option>
-                        <option value="2">Bug</option>
+                        <option value="0" selected>Story</option>
+                        <option value="1">Bug</option>
                     </select>
                 </div>
                 <div class="col form-group">
