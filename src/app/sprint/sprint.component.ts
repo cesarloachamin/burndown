@@ -37,7 +37,7 @@ export class SprintComponent implements OnInit {
     } else {
       subscriber = this.service.editBacklogItem(this.sprint, item);
     }
-    subscriber.subscribe(sprint => this.sprint = sprint);
+    subscriber.then(() => console.log('dsfasf'));
   }
 
   onBacklogItemDeleted(item: BacklogItem): void {
