@@ -18,10 +18,10 @@
     </thead>
     <tbody>
         <tr *ngFor="let sprint of sprints">
-            <td><a [routerLink]="['/sprint', sprint.id]">{{sprint.title}}</a></td>
+            <td><a [routerLink]="['/sprint', sprint.uid]">{{sprint.title}}</a></td>
             <td>{{sprint.startDate | date: 'longDate'}}</td>
             <td>{{sprint.endDate | date: 'longDate'}}</td>
-            <td>{{sprint.statusLabel}}</td>
+            <td>{{statusLabel(sprint)}}</td>
             <td>{{sprint.velocity}}</td>
         </tr>
     </tbody>

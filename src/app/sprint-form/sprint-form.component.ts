@@ -27,12 +27,11 @@ export class SprintFormComponent implements OnInit {
 
   onSubmit(): void {
     if (this.sprintForm.valid) {
-      const number = Math.random() * 1000;
-      const sprint = new Sprint(number.toFixed(0),
-                            this.sprintForm.controls['title'].value,
-                            this.sprintForm.controls['startDate'].value,
-                            this.sprintForm.controls['endDate'].value,
-                            this.sprintForm.controls['goal'].value);
+
+      const sprint = new Sprint(this.sprintForm.controls['title'].value,
+        this.sprintForm.controls['startDate'].value,
+        this.sprintForm.controls['endDate'].value,
+        this.sprintForm.controls['goal'].value);
       this.service.addSprint(sprint);
       this.activeModal.close('saved sprint');
     } else {

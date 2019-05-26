@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { SprintService } from '../sprint.service';
-import Sprint from '../model/sprint';
+import Sprint, {labelStatus} from '../model/sprint';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { SprintFormComponent } from '../sprint-form/sprint-form.component';
 
@@ -23,4 +23,7 @@ export class SprintListComponent implements OnInit {
     this.modalService.open(SprintFormComponent);
   }
 
+  statusLabel(sprint: Sprint) {
+    return labelStatus(sprint.status);
+  }
 }

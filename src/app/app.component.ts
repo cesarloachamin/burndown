@@ -7,12 +7,10 @@ import { AuthService } from './auth.service';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-  title = 'burndown';
   isLoggedIn = false;
 
   constructor(public authService: AuthService) {
-
+    this.isLoggedIn = this.authService.isLoggedIn;
+    this.authService.loginState.subscribe(loggedIn => this.isLoggedIn = loggedIn);
   }
-
-
 }
